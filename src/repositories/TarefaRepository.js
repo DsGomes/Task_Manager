@@ -1,4 +1,5 @@
 const Tarefa = require('../models/Tarefa');
+require('../models/db/config');
 
 exports.buscarTarefas = async() => {
     const tarefas = await Tarefa.find({});

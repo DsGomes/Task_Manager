@@ -16,7 +16,7 @@ exports.getById = async(req, res) => {
         let tarefa = await TarefaRepository.buscarTarefasPorId(req.params.id);
         res.status(200).json(tarefa);
     }catch{
-        if(err) return res.status(500).send("Erro interno do servidor");
+        res.status(500).send("Erro interno do servidor");
     }
 }
 
@@ -25,6 +25,6 @@ exports.Post = async(req, res) => {
         let response = await TarefaRepository.inserirTarefa(req.body);
         res.status(201).json(response);
     }catch{
-        return res.status(500).send("Erro interno do servidor");
+        res.status(500).send("Erro interno do servidor");
     }
 }

@@ -10,4 +10,7 @@ Rodar banco de dados local
 
 Rodar projeto
 
+- Criar arquivo .env na pasta environments, seguindo o padrão do arquivo .env.sample
+ALERT: ***Não alterar .env.sample****
+
 - npm start

@@ -1,9 +1,9 @@
 var createError = require('http-errors');
 var express = require('express');
-const mongoose = require('mongoose');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const enviro = require('dotenv').config({ path: path.resolve(__dirname, './environments/.env') });
 
 var tarefasRouter = require('./src/routes/tarefasRoute');
 var usuariosRouter = require('./src/routes/usuariosRoute');
@@ -17,9 +17,6 @@ app.use(cookieParser());
 
 app.use('/tarefas', tarefasRouter);
 app.use('/usuarios', usuariosRouter);
-
-mongoose.connect('mongodb://127.0.0.1:27018/TaskManagerDB', {useNewUrlParser: true});
-mongoose.set('bufferTimeoutMS', 100000);
 
 app.use(function(req, res, next) {
   next(createError(404));
