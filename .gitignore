@@ -102,3 +102,6 @@ dist
 
 # TernJS port file
 .tern-port
+
+#Ignorar pasta data criada para banco local
+data/
