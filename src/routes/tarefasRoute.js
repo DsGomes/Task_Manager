@@ -1,5 +1,4 @@
 const express = require('express');
-const Tarefa = require('../models/Tarefa');
 const router = express.Router();
 const TarefasController = require('./../controllers/tarefasController');
 

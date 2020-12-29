@@ -1,10 +1,21 @@
-import Usuario from './../models/Schemas/UsuarioSchema';
+const Usuario = require('../models/Usuario');
 
-class UsuarioRepository{
-    buscarUsuarios = () => {
-       let usuarios = Usuario.find();
-       return usuarios;     
-    }
+exports.buscarUsuario = async() => {
+    const usuario = await Usuario.find();
+    return usuario;
 }
 
-module.exports = UsuarioRepository;
+exports.cadastrarUsuario = async() => {
+    const usuario = await Usuario.create();
+    return usuario;
+}
+
+exports.alterarSenhaUsuario = async() => {
+    const usuario = await Usuario.findByIdAndUpdate();
+    return usuario;
+}
+
+exports.deletarUsuario = async() => {
+    const usuario = await Usuario.deleteOne();
+    return usuario;
+}
