@@ -1,13 +1,26 @@
 const mongoose = require('mongoose');
 
-const urlConnection = "mongodb://" + process.env.HOST_MONGO + ":" +
-                        process.env.PORT_MONGO + "/" +
-                        process.env.DB_MONGO;
+function connectDatabase(){
+    const urlConnection = process.env.MONGO_CONNECTION + process.env.DB_MONGO + "?serverSelectionTimeoutMS=1000";
 
-mongoose.connect(urlConnection,
-    {useNewUrlParser: true, useUnifiedTopology: true},
-    () => {
-        console.log('Connected!');
-    });
+    mongoose.connect(urlConnection,
+        {useNewUrlParser: true, useUnifiedTopology: true})
+        .then(() => {
+            console.log('Connected!');
+        })
+}
 
-module.exports = {}
+mongoose.connection.on('connected', () => {
+    console.log("Database is better now");
+    connectDatabase();
+});
+
+mongoose.connection.on('disconnected', () => {
+    console.log("Database Disconnected");
+});
+
+mongoose.connection.on('error', err => {
+    console.log(err);
+});
+
+module.exports = { connectDatabase }

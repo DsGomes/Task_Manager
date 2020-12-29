@@ -1,5 +1,4 @@
 const Tarefa = require('../models/Tarefa');
-require('../models/db/config');
 
 exports.buscarTarefas = async() => {
     const tarefas = await Tarefa.find({});
@@ -7,11 +6,11 @@ exports.buscarTarefas = async() => {
 }
 
 exports.buscarTarefasPorId = async(id) => {
-    let tarefa = await Tarefa.findById(id);
+    const tarefa = await Tarefa.findById(id);
     return tarefa;
 }
 
 exports.inserirTarefa = async(tarefa) => {
-    let tarefaPopulada = await Tarefa.create(tarefa);
+    const tarefaPopulada = await Tarefa.create(tarefa);
     return tarefaPopulada;
 }

@@ -1,14 +1,13 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-const enviro = require('dotenv').config({ path: path.resolve(__dirname, './environments/.env') });
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var tarefasRouter = require('./src/routes/tarefasRoute');
-var usuariosRouter = require('./src/routes/usuariosRoute');
+const tarefasRouter = require('./src/routes/tarefasRoute');
+const usuariosRouter = require('./src/routes/usuariosRoute');
 
-var app = express();
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
