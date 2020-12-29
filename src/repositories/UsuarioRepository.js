@@ -1,12 +1,12 @@
 const Usuario = require('../models/Usuario');
 
-exports.buscarUsuario = async() => {
-    const usuario = await Usuario.find();
+exports.buscarUsuario = async(nomeUsuario) => {
+    const usuario = await Usuario.findOne({ "Nome": nomeUsuario });
     return usuario;
 }
 
-exports.cadastrarUsuario = async() => {
-    const usuario = await Usuario.create();
+exports.cadastrarUsuario = async(usuario) => {
+    const usuario = await Usuario.create(usuario);
     return usuario;
 }
 
@@ -15,7 +15,7 @@ exports.alterarSenhaUsuario = async() => {
     return usuario;
 }
 
-exports.deletarUsuario = async() => {
-    const usuario = await Usuario.deleteOne();
+exports.deletarUsuario = async(id) => {
+    const usuario = await Usuario.deleteOne({ "_id": id });
     return usuario;
 }
