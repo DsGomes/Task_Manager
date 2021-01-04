@@ -6,16 +6,16 @@ exports.buscarUsuario = async(nomeUsuario) => {
 }
 
 exports.cadastrarUsuario = async(usuario) => {
-    const usuario = await Usuario.create(usuario);
-    return usuario;
+    const usuarioCadastrado = await Usuario.create(usuario);
+    return usuarioCadastrado;
 }
 
 exports.alterarSenhaUsuario = async() => {
-    const usuario = await Usuario.findByIdAndUpdate();
-    return usuario;
+    const senhaAlterada = await Usuario.findByIdAndUpdate();
+    return senhaAlterada;
 }
 
 exports.deletarUsuario = async(id) => {
-    const usuario = await Usuario.deleteOne({ "_id": id });
-    return usuario;
+    const usuarioDeletado = await Usuario.deleteOne({ "_id": id });
+    return usuarioDeletado;
 }

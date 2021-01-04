@@ -1,21 +1,27 @@
-const crypto = require('crypto');
+const cryptography = require('cryptography');
 
-const CRYPTOGRAPHY_DATA = {
-    algorithm : "aes256",
-    secret_key : "chaves",
-    type : "hex"
-};
+cryptography.defaults.key = "peakyBlinders";
+cryptography.defaults.encryptionAlgorithm = "aes192";
+cryptography.defaults.encoding = "hex";
 
 function crypt(senha) {
-    const cipher = crypto.createCipheriv(CRYPTOGRAPHY_DATA.algorithm, CRYPTOGRAPHY_DATA.secret_key);
-    cipher.update(senha);
-    return cipher.final(CRYPTOGRAPHY_DATA.type);
+    cryptography.encrypt(senha)
+        .then(encrypted => {
+            return encrypted;
+        })
+        .catch(error => {
+            console.log(error);
+        })
 };
 
 function decrypt(senha) {
-    const decipher = crypto.createDecipheriv(CRYPTOGRAPHY_DATA.algorithm, CRYPTOGRAPHY_DATA.secret_key);
-    decipher.update(senha, CRYPTOGRAPHY_DATA.type);
-    return decipher.final();
+    cryptography.decrypt(senha)
+        .then(decrypted => {
+            return decrypted;
+        })
+        .catch(error => {
+            console.log(error);
+        })
 };
 
 module.exports = { crypt, decrypt }

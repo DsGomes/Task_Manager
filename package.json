@@ -9,6 +9,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
+    "cryptography": "^1.2.3",
     "debug": "~2.6.9",
     "dotenv-safe": "^8.2.0",
     "express": "~4.16.1",
