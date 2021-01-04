@@ -1,5 +1,16 @@
-const UsuarioRepository = require('../repositories/UsuarioRepository');
 const UsuarioService = require('../services/UsuarioService');
+
+exports.Login = async(req, res) => {
+    UsuarioService.Login(req.body)
+        .then(usuario => {
+            if(usuario.message) return res.send(usuario.message);
+
+            res.status(200).json(usuario);
+        })
+        .catch(error => {
+            res.status(500).send("Não foi possível fazer o login. Tente novamente mais tarde!");
+        })
+}
 
 exports.Post = async(req, res) => {
     UsuarioService.cadastrarUsuario(req.body)
@@ -13,9 +24,6 @@ exports.Post = async(req, res) => {
         })
 }
 
-exports.PutSenha = async(req, res) => {
-    
-}
 
 exports.Delete = async(req, res) => {
 

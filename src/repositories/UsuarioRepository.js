@@ -10,11 +10,6 @@ exports.cadastrarUsuario = async(usuario) => {
     return usuarioCadastrado;
 }
 
-exports.alterarSenhaUsuario = async() => {
-    const senhaAlterada = await Usuario.findByIdAndUpdate();
-    return senhaAlterada;
-}
-
 exports.deletarUsuario = async(id) => {
     const usuarioDeletado = await Usuario.deleteOne({ "_id": id });
     return usuarioDeletado;

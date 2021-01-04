@@ -5,23 +5,13 @@ cryptography.defaults.encryptionAlgorithm = "aes192";
 cryptography.defaults.encoding = "hex";
 
 function crypt(senha) {
-    cryptography.encrypt(senha)
-        .then(encrypted => {
-            return encrypted;
-        })
-        .catch(error => {
-            console.log(error);
-        })
+    const encryptedPassword = cryptography.encryptSync(senha);
+    return encryptedPassword;
 };
 
 function decrypt(senha) {
-    cryptography.decrypt(senha)
-        .then(decrypted => {
-            return decrypted;
-        })
-        .catch(error => {
-            console.log(error);
-        })
+    const decryptedPassword = cryptography.decryptSync(senha);
+    return decryptedPassword;
 };
 
 module.exports = { crypt, decrypt }

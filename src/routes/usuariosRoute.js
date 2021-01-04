@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const UsuarioController = require('../controllers/usuariosController');
 
-router.post('/post', UsuarioController.Post);
+router.post('/login', UsuarioController.Login);
 
-router.put('/put', UsuarioController.PutSenha);
+router.post('/post', UsuarioController.Post);
 
 router.delete('/', UsuarioController.Delete);
 
